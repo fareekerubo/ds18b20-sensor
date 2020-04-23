@@ -1,4 +1,9 @@
+/* 
 
+
+code to read temperature vaues from 2 ds18b20 sensors and average them
+
+*/
 #include <OneWire.h> 
 #include <DallasTemperature.h>
 
@@ -31,13 +36,13 @@ void read_sensor()
 
  sensors.requestTemperatures();
  Serial.print("Temperature is:   "); 
-// Serial.print(sensors.getTempCByIndex(0)); // Why "byIndex"?
-// Serial.print("              ");  Serial.println(sensors.getTempCByIndex(1)); // Why "byIndex"? 
+ //Serial.print(sensors.getTempCByIndex(0)); // Why "byIndex"?
+ //Serial.print("              ");  Serial.println(sensors.getTempCByIndex(1)); // Why "byIndex"? 
  delay(100); 
- //return reading;
+ 
 
   reading =  sensors.getTempCByIndex(0);
-  reading1 =sensors.getTempCByIndex(1)  ; // whatever code reads the current value
+  reading1 =sensors.getTempCByIndex(1)  ;
   average = (reading + reading1)/2 ;  
   Serial.print(reading);
   Serial.print("     ");
@@ -45,8 +50,5 @@ void read_sensor()
   Serial.print("     ");
   Serial.print(average);
   Serial.println("     ");
-
-  
-  
   delay (100) ;
 }
